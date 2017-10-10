@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 
   sequence :bank_number do |n|
-    "0000#{n}"
+    n.to_s.rjust(3, '0')
   end
 
   sequence :email do |n|
@@ -94,13 +94,13 @@ FactoryGirl.define do
     f.address_number "foo"
     f.address_street "foo"
     f.phone_number "1234"
-    f.agency "foo"
-    f.agency_digit "foo"
-    f.owner_document "foo"
-    f.owner_name "foo"
+    f.agency "1"
+    f.agency_digit "1"
+    f.owner_document "97666238991"
+    f.owner_name "Foo Bar"
     f.account "1"
-    f.account_digit "1000"
-    f.account_type "foo"
+    f.account_digit "1"
+    f.account_type "conta_corrente"
   end
 
   factory :user_link do |f|
@@ -253,7 +253,7 @@ FactoryGirl.define do
   factory :single_bank_account, class: BankAccount do |f|
     f.association :bank, factory: :bank
     owner_name "Foo"
-    owner_document "000"
+    owner_document "58766155100"
     account_digit "1"
     agency "1"
     account '1'
